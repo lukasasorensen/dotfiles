@@ -61,6 +61,9 @@ alias python="python3"
 alias reload="source ~/.zshrc"
 alias ggf="echo 'dont do this you dummy'"
 alias nodesass="nvm use 12.13.0 && npm rebuild node-sass"
+alias c="cd ~/code"
+alias lg="lazygit"
+alias gitbranch="git branch -a | fzf-tmux -d 15 --preview=''"
 
 alias vim="nvim"
 alias vi="vi"
@@ -153,9 +156,9 @@ export PATH="/usr/local/sbin:$PATH"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS='--height=40% --preview="cat {}" --preview-window=right:60%:wrap'
+[ -f ~/.fzf/.config/fzf-git.sh ] && source ~/.fzf/.config/fzf-git.sh
+source ~/
+export FZF_DEFAULT_OPTS='--height=40% --preview="bat --color=always {}" --preview-window=right:60%:wrap'
 
 unalias gm
 

@@ -156,4 +156,9 @@ return {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
+  {
+    "mg979/vim-visual-multi",
+    lazy = false,
+    branch = "master",
+  },
 }

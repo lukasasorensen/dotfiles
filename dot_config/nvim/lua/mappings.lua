@@ -11,6 +11,13 @@ map("n", "<leader><space>", "<cmd>Telescope find_files<cr>", { desc = "Telescope
 map("n", "<leader>fc", live_grep_args_shortcuts.grep_word_under_cursor, { desc = "Telescope Find Word Under Cursor" })
 map("n", "<leader>fv", live_grep_args_shortcuts.grep_visual_selection, { desc = "Telescope Grep for Visual Selection" })
 map("v", "<leader>cp", [["+y]], { desc = "Copy to Clipboard" })
+map("n", "<leader>tr", "<cmd>Telescope resume<cr>", { desc = "Telescope resume last search" })
+map("n", "<C-t>", "<cmd>NvimTreeToggle<CR>", { desc = "Nvimtree Toggle window" })
+map("n", "<leader>fr", ":%s/<C-r><C-w>/", { desc = "Find and Replace" })
+map("v", "<leader>fr", "y:%s/<C-r>\"/", { desc = "Find and Replace" })
+map("n", "<leader>!", ":qa!<cr>", { desc = ":qa!" })
+map("n", "<leader>q", ":q<cr>", { desc = ":q" })
+
 
 -- harpoon
 local harpoon = require "harpoon"

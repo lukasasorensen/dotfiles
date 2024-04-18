@@ -22,7 +22,8 @@ local applicationHotkeys = {
   p = 'Messages',
   h = 'Charles',
   q = 'Workspaces',
-  o = 'Discord'
+  o = 'Discord',
+  z = 'zoom.us.app'
 }
 
 for key, app in pairs(applicationHotkeys) do
@@ -30,22 +31,6 @@ for key, app in pairs(applicationHotkeys) do
     hs.application.launchOrFocus(app)
   end)
 end
-
-local function focus_other_screen() -- focuses the other screen 
-   local screen = hs.mouse.getCurrentScreen()
-   local nextScreen = screen:next()
-   local rect = nextScreen:fullFrame()
-   local center = hs.geometry.rectMidPoint(rect)
-   hs.mouse.setAbsolutePosition(center)
-end 
-
-hs.hotkey.bind(hyper, "l", focus_other_screen);
-
-local function meet() 
-	hs.execute('meet', true);
-end
-
-hs.hotkey.bind(hyper, ";", meet);
 
 -- local spaces = require("hs._asm.undocumented.spaces")
 -- -- move current window to the space sp
