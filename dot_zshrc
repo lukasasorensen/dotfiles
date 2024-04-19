@@ -20,8 +20,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 export CORE_PLUGINS_PATH="/Users/lsorensen/code/platform-core-plugins"
 # Hero Devs Token
-export HERO_DEVS_TOKEN=pat-nes-cb8021d2-5b99-40d0-b095-691cd8678b40-863c482a-8fba-4aba-926b-4fa626edd06c
-
+[ -f ~/.herodevs/env.sh ] && source ~/.herodevs/env.sh
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
