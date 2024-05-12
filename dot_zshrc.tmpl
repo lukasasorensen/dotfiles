@@ -1,6 +1,8 @@
+{{- if eq .chezmoi.os "darwin" -}}
 ## start ssh-agent and add ssh keys to keychain
 eval $(ssh-agent)
 ssh-add ~/.ssh/bitbucket-macbook-pro-2024
+{{ end -}}
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -9,20 +11,38 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+{{- if eq .chezmoi.os "darwin" -}}
+############
+## if mac ##
+############
+
+# Hero Devs Token
+[ -f ~/.herodevs/env.sh ] && source ~/.herodevs/env.sh
+
+export CORE_PLUGINS_PATH="/Users/lsorensen/code/platform-core-plugins"
+
 # zsh-syntax-highlighting
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/lsorensen/.oh-my-zsh"
+{{ end -}}
+
+{{if (.chezmoi.kernel.osrelease | lower | contains "microsoft")}}
+############
+## if WSL ##
+############
+
+# Path to your oh-my-zsh installation.
+export ZSH="/home/virus/.oh-my-zsh"
+
+{{ end -}}
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/lsorensen/.oh-my-zsh"
-
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-export CORE_PLUGINS_PATH="/Users/lsorensen/code/platform-core-plugins"
-# Hero Devs Token
-[ -f ~/.herodevs/env.sh ] && source ~/.herodevs/env.sh
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
