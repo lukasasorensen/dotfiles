@@ -28,15 +28,16 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export ZSH="/Users/lsorensen/.oh-my-zsh"
 {{ end -}}
 
-{{if (.chezmoi.kernel.osrelease | lower | contains "microsoft")}}
-############
-## if WSL ##
-############
-
+{{if eq .chezmoi.os "linux"}}
+##############
+## if linux ##
+##############
 # Path to your oh-my-zsh installation.
 export ZSH="/home/virus/.oh-my-zsh"
 
-{{ end -}}
+# zsh syntax highlighting
+source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+{{end -}}
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
