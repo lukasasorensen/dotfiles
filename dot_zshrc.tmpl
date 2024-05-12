@@ -89,7 +89,6 @@ alias lg="lazygit"
 alias gitbranch="git branch -a | fzf-tmux -d 15 --preview=''"
 alias comp="cd ~/code/components/"
 alias components="cd ~/code/components/"
-alias brewinstallall="brew install bat chezmoi eza fzf gcc gnu-sed mkcert neovim python3 tree-sitter zoxide nvm openssh vscode-langservers-extracted zsh-syntax-highlighting lazygit ripgrep tmux gh docker-compose tlrc"
 
 alias vim="nvim"
 alias vi="vi"
@@ -110,6 +109,15 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
 export FZF_DEFAULT_OPTS='--height=40%'
 export FZF_CTRL_T_COMMAND='rg --files --hidden'
 export FZF_CTRL_T_OPTS='--height=40% --preview="bat --color=always --line-range=:40 {}" --preview-window=right:60%:wrap'
+
+## for computer setup
+alias brewinstallall="brew install bat chezmoi eza fzf gcc gnu-sed mkcert neovim python3 tree-sitter zoxide nvm openssh vscode-langservers-extracted zsh-syntax-highlighting lazygit ripgrep tmux gh docker-compose tlrc"
+
+installall() {
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  brewinstallall
+}
+
 
 commit () {
  branch="$(git branch | grep \* | cut -d ' ' -f2)"
