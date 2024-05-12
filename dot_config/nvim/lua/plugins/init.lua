@@ -160,5 +160,17 @@ return {
     "mg979/vim-visual-multi",
     lazy = false,
     branch = "master",
+    init = function()
+      local g = vim.g
+      g.VM_default_mappings = 0
+      g.VM_maps = {
+        ['Find Under'] = "<C-f>",
+        ['Find Subword Under'] = "<C-f>"
+      }
+    end,
+  },
+  {
+    "mtth/scratch.vim",
+    cmd = "Scratch",
   },
 }
