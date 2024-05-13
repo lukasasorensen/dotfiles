@@ -186,9 +186,29 @@ return {
       { "<M-h>", desc = "mini.move selection left", mode = "n" },
       { "<M-l>", desc = "mini.move selection right", mode = "n" },
     },
-    version = false,
+    version = '*',
     config = function()
       require("mini.move").setup()
     end,
   },
+  {
+    "echasnovski/mini.surround",
+    lazy = true,
+    version = '*',
+    keys = {
+      { "sa", desc = "add surrounding in", mode = "n"},
+      { "sd", desc = "delete surrounding", mode = "n"},
+      { "sf", desc = "find surround to the right", mode = "n"},
+      { "sF", desc = "find surround to the left", mode = "n"},
+      { "sr", desc = "replace surrounding", mode = "n"},
+      { "sa", desc = "add surrounding", mode = "v"},
+      { "sd", desc = "delete surrounding", mode = "v"},
+      { "sf", desc = "find surround to the right", mode = "v"},
+      { "sF", desc = "find surround to the left", mode = "v"},
+      { "sr", desc = "replace surrounding", mode = "v"},
+    },
+    config = function()
+     require("mini.surround").setup()
+    end
+  }
 }
