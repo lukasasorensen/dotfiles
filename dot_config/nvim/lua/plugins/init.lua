@@ -164,13 +164,31 @@ return {
       local g = vim.g
       g.VM_default_mappings = 0
       g.VM_maps = {
-        ['Find Under'] = "<C-f>",
-        ['Find Subword Under'] = "<C-f>"
+        ["Find Under"] = "<C-f>",
+        ["Find Subword Under"] = "<C-f>",
       }
     end,
   },
   {
     "mtth/scratch.vim",
     cmd = "Scratch",
+  },
+  {
+    "echasnovski/mini.move",
+    lazy = true,
+    keys = {
+      { "<M-j>", desc = "mini.move selection down", mode = "v" },
+      { "<M-k>", desc = "mini.move selection up", mode = "v" },
+      { "<M-h>", desc = "mini.move selection left", mode = "v" },
+      { "<M-l>", desc = "mini.move selection right", mode = "v" },
+      { "<M-j>", desc = "mini.move selection down", mode = "n" },
+      { "<M-k>", desc = "mini.move selection up", mode = "n" },
+      { "<M-h>", desc = "mini.move selection left", mode = "n" },
+      { "<M-l>", desc = "mini.move selection right", mode = "n" },
+    },
+    version = false,
+    config = function()
+      require("mini.move").setup()
+    end,
   },
 }
