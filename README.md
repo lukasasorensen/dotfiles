@@ -47,7 +47,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 brew install chezmoi
 ```
 
-## intialize with chezmoi
+## initialize with chezmoi
 ```
 chezmoi init https://github.com/lukasasorensen/dotfiles --apply
 ```
@@ -57,3 +57,9 @@ alias command after sourcing zshrc
 brewinstallall
 ```
 
+## Install Tmux plugins
+open tmux and use this command to install plugins.
+if it doesnt work, ensure you have tpm installed at ~/.tmux/plugins/tpm
+```
+ctrl+b - I
+```
