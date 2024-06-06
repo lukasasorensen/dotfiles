@@ -182,8 +182,9 @@ export PATH="/usr/local/sbin:$PATH"
 unalias gm
 
 vb() {
-  npm version patch
+  npm --no-git-tag-version version patch
   npm i
+  commit "version bump"
 }
 
 # zoxide
