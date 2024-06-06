@@ -1,14 +1,10 @@
+hs.loadSpoon("KSheet")
+
 local hyper = { "cmd", "alt", "ctrl", "shift" }
 hs.hotkey.bind(hyper, "0", function()
   hs.reload()
 end)
 hs.notify.new({title="Hammerspoon", informativeText="Config loaded"}):send()
-
-hs.hotkey.bind(hyper, "k", function()
-  local win = hs.window.focusedWindow();
-  if not win then return end
-win:moveToScreen(win:screen():next())
-end)
 
 local applicationHotkeys = {
   a = 'Google Chrome',
@@ -31,6 +27,10 @@ for key, app in pairs(applicationHotkeys) do
     hs.application.launchOrFocus(app)
   end)
 end
+
+hs.hotkey.bind(hyper, "k", function ()
+  spoon.KSheet:toggle();
+end)
 
 -- local spaces = require("hs._asm.undocumented.spaces")
 -- -- move current window to the space sp
