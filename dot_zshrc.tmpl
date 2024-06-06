@@ -27,6 +27,8 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/lsorensen/.oh-my-zsh"
 
+export COMMIT_PREFIX="DDP-"
+
 {{ end -}}
 
 {{if eq .chezmoi.os "linux"}}
@@ -118,30 +120,6 @@ alias brewinstallall="brew install bat chezmoi eza fzf gcc gnu-sed mkcert neovim
 installall() {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brewinstallall
-}
-
-
-commit () {
- branch="$(git branch | grep \* | cut -d ' ' -f2)"
- IFS='-' read -rA arrBranch <<< "$branch"
- story="$arrBranch[1]-$arrBranch[2]"
- branchPrefix=${arrBranch[1]}""
- commitMessage="$story: $1"
-
- if [ "$branchPrefix" != "DDP" ]; then
-   commitMessage="$1"
-   read -q "REPLY?Branch name does not start with 'DDP'. would you like still include prefix in commit? [y/n] "
-   echo
-   if [[ $REPLY =~ ^[Yy]$ ]];
-   then
-    echo "Enter in a prefix:"
-    read ANSWER
-	commitMessage="$ANSWER: $1"
-   fi
- fi
- 
- git add .
- git commit -m "$commitMessage"
 }
 
 pullindev () {
