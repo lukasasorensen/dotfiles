@@ -159,7 +159,13 @@ ql() {
   qlmanage -p "$1" &>/dev/null
 }
 
+p() {
+  cd ~/`cd ~;  find code -maxdepth 1  | fzf --preview 'cat {}/README.md'`
+}
 
+cc() {
+  cd ~/code/`cd ~/code;  find components -maxdepth 1  | fzf --preview 'cat {}/README.md'`
+}
 
 # source /Users/lsorensen/.gulp.plugin.zsh/gulp.plugin.zsh
 
