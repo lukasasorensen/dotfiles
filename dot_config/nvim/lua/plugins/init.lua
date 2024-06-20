@@ -26,6 +26,17 @@ return {
     end,
   },
   {
+    "wfxr/minimap.vim",
+    build = "cargo install --locked code-minimap",
+    lazy = false,
+    cmd = { "Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight" },
+    init = function()
+      vim.cmd "let g:minimap_width = 10"
+      vim.cmd "let g:minimap_auto_start = 1"
+      vim.cmd "let g:minimap_auto_start_win_enter = 1"
+    end,
+  },
+  {
     "roobert/tailwindcss-colorizer-cmp.nvim",
     lazy = false,
   },
@@ -186,7 +197,7 @@ return {
       { "<M-h>", desc = "mini.move selection left", mode = "n" },
       { "<M-l>", desc = "mini.move selection right", mode = "n" },
     },
-    version = '*',
+    version = "*",
     config = function()
       require("mini.move").setup()
     end,
@@ -194,21 +205,21 @@ return {
   {
     "echasnovski/mini.surround",
     lazy = true,
-    version = '*',
+    version = "*",
     keys = {
-      { "sa", desc = "add surrounding in", mode = "n"},
-      { "sd", desc = "delete surrounding", mode = "n"},
-      { "sf", desc = "find surround to the right", mode = "n"},
-      { "sF", desc = "find surround to the left", mode = "n"},
-      { "sr", desc = "replace surrounding", mode = "n"},
-      { "sa", desc = "add surrounding", mode = "v"},
-      { "sd", desc = "delete surrounding", mode = "v"},
-      { "sf", desc = "find surround to the right", mode = "v"},
-      { "sF", desc = "find surround to the left", mode = "v"},
-      { "sr", desc = "replace surrounding", mode = "v"},
+      { "sa", desc = "add surrounding in", mode = "n" },
+      { "sd", desc = "delete surrounding", mode = "n" },
+      { "sf", desc = "find surround to the right", mode = "n" },
+      { "sF", desc = "find surround to the left", mode = "n" },
+      { "sr", desc = "replace surrounding", mode = "n" },
+      { "sa", desc = "add surrounding", mode = "v" },
+      { "sd", desc = "delete surrounding", mode = "v" },
+      { "sf", desc = "find surround to the right", mode = "v" },
+      { "sF", desc = "find surround to the left", mode = "v" },
+      { "sr", desc = "replace surrounding", mode = "v" },
     },
     config = function()
-     require("mini.surround").setup()
-    end
-  }
+      require("mini.surround").setup()
+    end,
+  },
 }
