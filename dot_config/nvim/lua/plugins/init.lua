@@ -28,12 +28,12 @@ return {
   {
     "wfxr/minimap.vim",
     build = "cargo install --locked code-minimap",
-    lazy = false,
+    lazy = true,
     cmd = { "Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight" },
     init = function()
       vim.cmd "let g:minimap_width = 10"
-      vim.cmd "let g:minimap_auto_start = 1"
-      vim.cmd "let g:minimap_auto_start_win_enter = 1"
+      vim.cmd "let g:minimap_auto_start = 0"
+      vim.cmd "let g:minimap_auto_start_win_enter = 0"
     end,
   },
   {
@@ -217,6 +217,25 @@ return {
       { "sf", desc = "find surround to the right", mode = "v" },
       { "sF", desc = "find surround to the left", mode = "v" },
       { "sr", desc = "replace surrounding", mode = "v" },
+    },
+    config = function()
+      require("mini.surround").setup()
+    end,
+  },
+  {
+    "arthurxavierx/vim-caser",
+    lazy = true,
+    version = "*",
+    keys = {
+      { "gsm", desc = "convert to MixedCase", mode = "v" },
+      { "gsc", desc = "convert to camelCase", mode = "v" },
+      { "gs_", desc = "convert to snake_case", mode = "v" },
+      { "gsu", desc = "convert to UPPER_CASE", mode = "v" },
+      { "gst", desc = "convert to Title Case", mode = "v" },
+      { "gss", desc = "convert to Sentence case", mode = "v" },
+      { "gs-", desc = "convert to dash-case", mode = "v" },
+      { "gs.", desc = "convert to dot.case", mode = "v" },
+      { "gs<space>", desc = "convert to space case", mode = "v" },
     },
     config = function()
       require("mini.surround").setup()

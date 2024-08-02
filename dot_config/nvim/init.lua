@@ -1,11 +1,12 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
-vim.g.mapleader = ","
+local g = vim.g;
+g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
+g.mapleader = ","
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
 -- vscode format i.e json files
-vim.g.vscode_snippets_path = "~/.config/vscode_snippets"
+g.vscode_snippets_path = "~/.config/vscode_snippets"
 
 if not vim.loop.fs_stat(lazypath) then
   local repo = "https://github.com/folke/lazy.nvim.git"
@@ -13,6 +14,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
+
+-- Set relative line numbers
+vim.opt.relativenumber = true
+-- Set absolute line numbers
+vim.opt.number = true
 
 local lazy_config = require "configs.lazy"
 

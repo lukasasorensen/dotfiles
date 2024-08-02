@@ -8,13 +8,14 @@ end)
 hs.notify.new({ title = "Hammerspoon", informativeText = "Config loaded" }):send()
 
 local applicationHotkeys = {
-	a = "Google Chrome",
+	f = "Google Chrome",
 	t = "iTerm",
-	s = "Visual Studio Code",
+	s = "iTerm",
 	m = "Spotify",
 	x = "TextEdit",
 	i = "Safari",
 	w = "Studio 3T",
+	v = "Visual Studio Code",
 	d = "Slack",
 	p = "Messages",
 	h = "Charles",
@@ -110,22 +111,22 @@ local zsaMediaPath = "~/.hammerspoon/images/ERGO_LAYOUT_2_MEDIA.png"
 local zsaTmuxPath = "~/.hammerspoon/images/ERGO_LAYOUT_4_TMUX.png"
 local zsaMacPath = "~/.hammerspoon/images/ERGO_LAYOUT_6_MAC.png"
 
-hs.hotkey.bind(meh, "0", function()
+hs.hotkey.bind(meh, "1", function()
 	showImagePopup(zsaBase0Path)
 end)
 
-hs.hotkey.bind(meh, "1", function()
+hs.hotkey.bind(meh, "2", function()
 	showImagePopup(zsaSymbolsPath)
 end)
 
-hs.hotkey.bind(meh, "2", function()
+hs.hotkey.bind(meh, "3", function()
 	showImagePopup(zsaMediaPath)
 end)
 
-hs.hotkey.bind(meh, "3", function()
+hs.hotkey.bind(meh, "4", function()
 	showImagePopup(zsaTmuxPath)
 end)
 
-hs.hotkey.bind(meh, "4", function()
+hs.hotkey.bind(meh, "5", function()
 	showImagePopup(zsaMacPath)
 end)
