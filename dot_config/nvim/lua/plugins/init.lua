@@ -95,7 +95,7 @@ return {
         "prettier",
         "json-lsp",
         "eslint-lsp",
-        "typescript-language-server",
+        "tsserver",
       },
     },
   },
@@ -240,5 +240,67 @@ return {
     config = function()
       require("mini.surround").setup()
     end,
+  },
+  {
+    "benfowler/telescope-luasnip.nvim",
+    lazy = true,
+    keys = {
+      { "<leader>fs", desc = "find snippet", mode = "n" },
+    },
+    config = function()
+      require("telescope").load_extension "luasnip"
+    end,
+  },
+  {
+    "jackMort/ChatGPT.nvim",
+    config = function()
+      require("chatgpt").setup {
+        api_key_cmd = "op read op://private/chatgpt/apikey --no-newline",
+        openai_params = {
+          model = "gpt-4o-mini",
+          frequency_penalty = 0,
+          presence_penalty = 0,
+          max_tokens = 3000,
+          temperature = 0,
+          top_p = 1,
+          n = 1,
+        },
+        openai_edit_params = {
+          model = "gpt-4o-mini",
+          frequency_penalty = 0,
+          presence_penalty = 0,
+          temperature = 0,
+          max_tokens = 3000,
+          top_p = 1,
+          n = 1,
+        },
+      }
+    end,
+    lazy = true,
+    keys = {
+      { "<leader>gpt", mode = { "n", "v" }, "<cmd>ChatGPT<CR>", desc = "ChatGPT" },
+      { "<leader>gpe", mode = { "n", "v" }, "<cmd>ChatGPTEditWithInstruction<CR>", desc = "Edit with instruction" },
+      { "<leader>gpg", mode = { "n", "v" }, "<cmd>ChatGPTRun grammar_correction<CR>", desc = "Grammar Correction" },
+      { "<leader>gpa", mode = { "n", "v" }, "<cmd>ChatGPTRun translate<CR>", desc = "Translate" },
+      { "<leader>gpk", mode = { "n", "v" }, "<cmd>ChatGPTRun keywords<CR>", desc = "Keywords" },
+      { "<leader>gpd", mode = { "n", "v" }, "<cmd>ChatGPTRun docstring<CR>", desc = "Docstring" },
+      { "<leader>gps", mode = { "n", "v" }, "<cmd>ChatGPTRun add_tests<CR>", desc = "Add Tests" },
+      { "<leader>gpo", mode = { "n", "v" }, "<cmd>ChatGPTRun optimize_code<CR>", desc = "Optimize Code" },
+      { "<leader>gpm", mode = { "n", "v" }, "<cmd>ChatGPTRun summarize<CR>", desc = "Summarize" },
+      { "<leader>gpb", mode = { "n", "v" }, "<cmd>ChatGPTRun fix_bugs<CR>", desc = "Fix Bugs" },
+      { "<leader>gpx", mode = { "n", "v" }, "<cmd>ChatGPTRun explain_code<CR>", desc = "Explain Code" },
+      {
+        "<leader>gpr",
+        mode = { "n", "v" },
+        "<cmd>ChatGPTRun code_readability_analysis<CR>",
+        desc = "Readability Analysis",
+      },
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "folke/trouble.nvim", -- optional
+      "nvim-telescope/telescope.nvim",
+    },
   },
 }
