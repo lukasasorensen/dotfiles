@@ -43,6 +43,12 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # zsh syntax highlighting
 source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# add simple commit alias
+commit() {
+  git add .
+  git commit -am "$0"
+}
 {{end -}}
 
 # If you come from bash you might have to change your $PATH.
