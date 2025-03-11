@@ -2,12 +2,13 @@ hs.loadSpoon("KSheet")
 
 local hyper = { "cmd", "alt", "ctrl", "shift" }
 local meh = { "alt", "ctrl", "shift" }
-hs.hotkey.bind(hyper, "0", function()
+hs.hotkey.bind(hyper, "=", function()
 	hs.reload()
 end)
 hs.notify.new({ title = "Hammerspoon", informativeText = "Config loaded" }):send()
 
 local applicationHotkeys = {
+	b = "Brave Browser",
 	f = "Google Chrome",
 	t = "iTerm",
 	s = "iTerm",
@@ -18,10 +19,10 @@ local applicationHotkeys = {
 	v = "Visual Studio Code",
 	d = "Slack",
 	p = "Messages",
-	h = "Charles",
-	q = "Workspaces",
 	o = "Discord",
 	z = "zoom.us.app",
+	n = "Obsidian",
+	g = "ChatGPT"
 }
 
 for key, app in pairs(applicationHotkeys) do
@@ -110,6 +111,9 @@ local zsaSymbolsPath = "~/.hammerspoon/images/ERGO_LAYOUT_1_SYMBOLS.png"
 local zsaMediaPath = "~/.hammerspoon/images/ERGO_LAYOUT_2_MEDIA.png"
 local zsaTmuxPath = "~/.hammerspoon/images/ERGO_LAYOUT_4_TMUX.png"
 local zsaMacPath = "~/.hammerspoon/images/ERGO_LAYOUT_6_MAC.png"
+local qmkSweepLayer0 = "/Users/lsorensen/code/ferris-sweep-layout/images/sweep-layer-0.png"
+local qmkSweepLayer1 = "/Users/lsorensen/code/ferris-sweep-layout/images/sweep-layer-1.png"
+local qmkSweepLayer2 = "/Users/lsorensen/code/ferris-sweep-layout/images/sweep-layer-2.png"
 
 hs.hotkey.bind(meh, "1", function()
 	showImagePopup(zsaBase0Path)
@@ -129,4 +133,16 @@ end)
 
 hs.hotkey.bind(meh, "5", function()
 	showImagePopup(zsaMacPath)
+end)
+
+hs.hotkey.bind(hyper, "0", function()
+	showImagePopup(qmkSweepLayer0)
+end)
+
+hs.hotkey.bind(hyper, "1", function()
+	showImagePopup(qmkSweepLayer1)
+end)
+
+hs.hotkey.bind(hyper, "2", function()
+	showImagePopup(qmkSweepLayer2)
 end)

@@ -4,12 +4,14 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 local live_grep_args_shortcuts = require "telescope-live-grep-args.shortcuts"
+local telescope_builtin = require "telescope.builtin"
 
 -- map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 map("n", "<leader><space>", "<cmd>Telescope find_files<cr>", { desc = "Telescope Find files" })
 map("n", "<leader>fc", live_grep_args_shortcuts.grep_word_under_cursor, { desc = "Telescope Find Word Under Cursor" })
 map("v", "<leader>fv", live_grep_args_shortcuts.grep_visual_selection, { desc = "Telescope Grep for Visual Selection" })
+map('n', '<leader>,', telescope_builtin.buffers, { desc = 'Telescope buffers' })
 map("v", "<leader>cp", [["+y]], { desc = "Copy to Clipboard" })
 map("n", "<leader>tr", "<cmd>Telescope resume<cr>", { desc = "Telescope resume last search" })
 map("n", "<C-t>", "<cmd>NvimTreeToggle<CR>", { desc = "Nvimtree Toggle window" })

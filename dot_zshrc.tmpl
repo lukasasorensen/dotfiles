@@ -97,6 +97,7 @@ alias gitbranch="git branch -a | fzf-tmux -d 15 --preview=''"
 alias comp="cd ~/code/components/"
 alias components="cd ~/code/components/"
 alias sweep="bat /Users/lsorensen/qmk_firmware/keyboards/ferris/keymaps/lsorensen/keymap.c | grep \*"
+alias gg="git checkout develop && git fetch && git pull && npm i"
 
 alias vim="nvim"
 alias vi="vi"
@@ -153,6 +154,15 @@ pullinmaster() {
 gitreset() {
  git add .
  git reset HEAD --hard
+}
+
+mergedevtostaging() {
+  git checkout develop
+  git fetch
+  git pull
+  git checkout staging
+  git pull
+  git merge develop
 }
 
 function https-server() {
