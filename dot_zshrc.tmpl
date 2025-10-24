@@ -1,9 +1,3 @@
-{{- if eq .chezmoi.os "darwin" -}}
-## start ssh-agent and add ssh keys to keychain
-eval $(ssh-agent)
-ssh-add ~/.ssh/bitbucket-macbook-pro-2024
-{{ end -}}
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -11,12 +5,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source /Users/lsorensen/.config/op/plugins.sh
 
 {{if eq .chezmoi.os "darwin"}}
 ############
 ## if mac ##
 ############
+
+source /Users/lsorensen/.config/op/plugins.sh
 
 # Hero Devs Token
 [ -f ~/.herodevs/env.sh ] && source ~/.herodevs/env.sh
@@ -108,8 +103,29 @@ alias gg="git checkout develop && git fetch && git pull && npm i"
 alias vim="nvim"
 alias vi="vi"
 
+alias crkbd="cd /Users/lsorensen/code/keyboards/lsorensen_crkbd_qmk/keyboards/crkbd/keymaps/lsorensen"
+alias scripts= "cd ~/code/scripts/"
+
 #eza aliases
 alias ls="eza --grid --icons=always --color=always --git"
+
+scratch() {
+  print -n "File Extension: " 
+  read ext
+  cd ~/code/scratch/
+  local date filename
+  date=$(date '+%Y-%m-%d-%H:%M:%S')
+  filename="scratch-${date}.${ext}"
+  vim $filename
+}
+
+jsscratch() {
+  cd ~/code/scratch/
+  date=$(date '+%Y-%m-%d-%H:%M:%S')
+  filename="scratch-${date}.js"
+  vim $filename
+}
+
 
   # Set Spaceship ZSH as a prompt
 #   autoload -U promptinit; promptinit
@@ -124,6 +140,11 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
 export FZF_DEFAULT_OPTS='--height=40%'
 export FZF_CTRL_T_COMMAND='rg --files --hidden'
 export FZF_CTRL_T_OPTS='--height=40% --preview="bat --color=always --line-range=:40 {}" --preview-window=right:60%:wrap'
+
+#Postres
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/postgresql@16/include"
 
 ## for computer setup
 alias brewinstallall="brew install bat chezmoi eza fzf gcc gnu-sed mkcert neovim python3 tree-sitter zoxide nvm openssh vscode-langservers-extracted zsh-syntax-highlighting lazygit ripgrep tmux gh docker-compose tlrc"
@@ -171,6 +192,10 @@ mergedevtostaging() {
   git merge develop
 }
 
+lb() {
+  git checkout $(git branch -a | fzf)
+}
+
 function https-server() {
   http-server --ssl --cert ~/.localhost-ssl/localhost.crt --key ~/.localhost-ssl/localhost.key
 }
@@ -185,6 +210,14 @@ p() {
 
 cc() {
   cd ~/code/`cd ~/code;  find components -maxdepth 1  | fzf --preview 'cat {}/README.md'`
+}
+
+caff() {
+  caffeinate -u -t 14400
+}
+
+zan() {
+  command man "$@" | col -bx | bat -l man -p;
 }
 
 # source /Users/lsorensen/.gulp.plugin.zsh/gulp.plugin.zsh
