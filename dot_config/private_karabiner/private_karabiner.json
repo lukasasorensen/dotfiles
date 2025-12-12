@@ -194,6 +194,24 @@
                     {
                         "manipulators": [
                             {
+                                "description": "Change caps_lock to command+control+option+shift.",
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": ["left_command", "left_control", "left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
+                            {
                                 "description": "Change mouse button 4 to ctrl+left_arrow.",
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
@@ -229,7 +247,7 @@
                             {
                                 "description": "Change fn to command+control+option+shift.",
                                 "from": {
-                                    "key_code": "fn",
+                                    "key_code": "caps_lock",
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
@@ -284,7 +302,13 @@
                         "product_id": 50475,
                         "vendor_id": 1133
                     },
-                    "ignore": false
+                    "ignore": false,
+                    "simple_modifications": [
+                        {
+                            "from": { "pointing_button": "button3" },
+                            "to": [{ "pointing_button": "button10" }]
+                        }
+                    ]
                 },
                 {
                     "identifiers": {
@@ -313,14 +337,23 @@
                 },
                 {
                     "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 834,
-                        "vendor_id": 1452
+                        "is_pointing_device": true,
+                        "product_id": 50184,
+                        "vendor_id": 1133
                     },
+                    "ignore": false,
                     "simple_modifications": [
                         {
-                            "from": { "key_code": "caps_lock" },
-                            "to": [{ "key_code": "left_control" }]
+                            "from": { "pointing_button": "button2" },
+                            "to": [{ "pointing_button": "button3" }]
+                        },
+                        {
+                            "from": { "pointing_button": "button4" },
+                            "to": [{ "mouse_key": { "vertical_wheel": -64 } }]
+                        },
+                        {
+                            "from": { "pointing_button": "button5" },
+                            "to": [{ "mouse_key": { "vertical_wheel": 64 } }]
                         }
                     ]
                 }

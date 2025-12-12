@@ -5,9 +5,9 @@
 local M = {}
 
 M.base46 = {
-  theme = "bearded-arc",
+  theme = "chadracula",
 
-  transparency = true,
+  transparency = false,
 
   nvdash = {
     load_on_startup = true,

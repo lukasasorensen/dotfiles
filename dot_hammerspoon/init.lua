@@ -8,7 +8,7 @@ end)
 hs.notify.new({ title = "Hammerspoon", informativeText = "Config loaded" }):send()
 
 local applicationHotkeys = {
-	b = "Brave Browser",
+	b = "DBeaver",
 	f = "Google Chrome",
 	t = "iTerm",
 	s = "iTerm",
@@ -22,7 +22,8 @@ local applicationHotkeys = {
 	o = "Discord",
 	z = "zoom.us.app",
 	n = "Obsidian",
-	g = "ChatGPT"
+	g = "Firefox",
+	c = "Cursor"
 }
 
 for key, app in pairs(applicationHotkeys) do
@@ -146,3 +147,21 @@ end)
 hs.hotkey.bind(hyper, "2", function()
 	showImagePopup(qmkSweepLayer2)
 end)
+
+caffeine = hs.menubar.new()
+function setCaffeineDisplay(state)
+    if state then
+        caffeine:setTitle("☕️")
+    else
+        caffeine:setTitle("💤")
+    end
+end
+
+function caffeineClicked()
+    setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
+end
+
+if caffeine then
+    caffeine:setClickCallback(caffeineClicked)
+    setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
+end

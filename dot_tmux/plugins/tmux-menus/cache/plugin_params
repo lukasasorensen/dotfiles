@@ -1,0 +1,11 @@
+#!/bin/sh
+# Always sourced file - Fake bang path to help editors
+cfg_trigger_key="\\"
+cfg_no_prefix="false"
+cfg_mnu_loc_x="C"
+cfg_mnu_loc_y="C"
+cfg_use_cache="true"
+cfg_tmux_conf="/Users/lsorensen/.tmux.conf"
+cfg_log_file=""
+
+cfg_use_notes="false"
