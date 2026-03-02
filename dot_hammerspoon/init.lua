@@ -2,11 +2,17 @@ hs.loadSpoon("KSheet")
 
 local hyper = { "cmd", "alt", "ctrl", "shift" }
 local meh = { "alt", "ctrl", "shift" }
+
+-- reload hammerspoon --
 hs.hotkey.bind(hyper, "=", function()
 	hs.reload()
 end)
+
 hs.notify.new({ title = "Hammerspoon", informativeText = "Config loaded" }):send()
 
+-- hyper + [key] app switching --
+-- brings the targeted app into focus, opens it if not already open --
+-- [key] = "ApplicationToFocus"
 local applicationHotkeys = {
 	b = "DBeaver",
 	f = "Google Chrome",
@@ -165,3 +171,37 @@ if caffeine then
     caffeine:setClickCallback(caffeineClicked)
     setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
 end
+
+
+-- WIN LEFT/RIGHT window moving shortcut replication
+-- Move focused window to adjacent screen in a given direction
+local function moveWindowToScreen(direction)
+    local win = hs.window.focusedWindow()
+    if not win then return end
+
+    local currentScreen = win:screen()
+    local targetScreen = nil
+
+    if direction == "left" then
+        targetScreen = currentScreen:toWest()
+    elseif direction == "right" then
+        targetScreen = currentScreen:toEast()
+    end
+
+    if not targetScreen then return end
+
+    -- Move window to target screen
+    win:moveToScreen(targetScreen)
+
+    -- Maximize window on the new screen (like Windows snapping behavior)
+    win:maximize()
+end
+
+-- Bindings
+hs.hotkey.bind(hyper, "Left", function()
+    moveWindowToScreen("left")
+end)
+
+hs.hotkey.bind(hyper, "Right", function()
+    moveWindowToScreen("right")
+end)
