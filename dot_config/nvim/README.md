@@ -1,7 +1,4 @@
-# starter
-Starter config for NvChad
+# 💤 LazyVim
 
-# Install Deps
-```
-npm i -g typescript typescript-language-server vscode-langservers-extracted 
-```
+A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
+Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
