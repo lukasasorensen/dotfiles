@@ -1,1 +1,0 @@
- "" "Swap window Left" p "swap-window -d -t :-1  ; run-shell /Users/lsorensen/.config/tmux/plugins/tmux-menus/items/window_move.sh" "Swap window Right" n "swap-window -d -t :+1  ; run-shell /Users/lsorensen/.config/tmux/plugins/tmux-menus/items/window_move.sh"
