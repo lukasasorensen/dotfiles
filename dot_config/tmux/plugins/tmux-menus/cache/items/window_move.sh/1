@@ -1,0 +1,1 @@
+tmux display-menu -T '#[align=centre] Move Window ' -x 'C' -y 'C' "Back to Handling Window  <--" Left "run-shell '/Users/lsorensen/.config/tmux/plugins/tmux-menus/items/windows.sh'" "Back to Main menu        <==" Home "run-shell '/Users/lsorensen/.config/tmux/plugins/tmux-menus/items/main.sh'"

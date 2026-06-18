@@ -1,0 +1,1 @@
+ "Display Commands" ! 'run-shell "show_cmds_state='1' /Users/lsorensen/.config/tmux/plugins/tmux-menus/items/window_move.sh"'
