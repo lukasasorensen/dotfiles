@@ -14,22 +14,18 @@ hs.notify.new({ title = "Hammerspoon", informativeText = "Config loaded" }):send
 -- brings the targeted app into focus, opens it if not already open --
 -- [key] = "ApplicationToFocus"
 local applicationHotkeys = {
-	b = "DBeaver",
 	f = "Google Chrome",
-	t = "iTerm",
+	t = "Terminal",
 	s = "iTerm",
-	m = "Spotify",
 	x = "TextEdit",
-	i = "Safari",
 	w = "Studio 3T",
-	v = "Visual Studio Code",
 	d = "Slack",
 	p = "Messages",
-	o = "Discord",
 	z = "zoom.us.app",
 	n = "Obsidian",
 	g = "Firefox",
-	c = "Cursor"
+	c = "Claude",
+	e = "Zed",
 }
 
 for key, app in pairs(applicationHotkeys) do
@@ -156,52 +152,55 @@ end)
 
 caffeine = hs.menubar.new()
 function setCaffeineDisplay(state)
-    if state then
-        caffeine:setTitle("☕️")
-    else
-        caffeine:setTitle("💤")
-    end
+	if state then
+		caffeine:setTitle("☕️")
+	else
+		caffeine:setTitle("💤")
+	end
 end
 
 function caffeineClicked()
-    setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
+	setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
 end
 
 if caffeine then
-    caffeine:setClickCallback(caffeineClicked)
-    setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
+	caffeine:setClickCallback(caffeineClicked)
+	setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
 end
-
 
 -- WIN LEFT/RIGHT window moving shortcut replication
 -- Move focused window to adjacent screen in a given direction
 local function moveWindowToScreen(direction)
-    local win = hs.window.focusedWindow()
-    if not win then return end
+	local win = hs.window.focusedWindow()
+	if not win then
+		return
+	end
 
-    local currentScreen = win:screen()
-    local targetScreen = nil
+	local currentScreen = win:screen()
+	local targetScreen = nil
 
-    if direction == "left" then
-        targetScreen = currentScreen:toWest()
-    elseif direction == "right" then
-        targetScreen = currentScreen:toEast()
-    end
+	if direction == "left" then
+		targetScreen = currentScreen:toWest()
+	elseif direction == "right" then
+		targetScreen = currentScreen:toEast()
+	end
 
-    if not targetScreen then return end
+	if not targetScreen then
+		return
+	end
 
-    -- Move window to target screen
-    win:moveToScreen(targetScreen)
+	-- Move window to target screen
+	win:moveToScreen(targetScreen)
 
-    -- Maximize window on the new screen (like Windows snapping behavior)
-    win:maximize()
+	-- Maximize window on the new screen (like Windows snapping behavior)
+	win:maximize()
 end
 
 -- Bindings
 hs.hotkey.bind(hyper, "Left", function()
-    moveWindowToScreen("left")
+	moveWindowToScreen("left")
 end)
 
 hs.hotkey.bind(hyper, "Right", function()
-    moveWindowToScreen("right")
+	moveWindowToScreen("right")
 end)
