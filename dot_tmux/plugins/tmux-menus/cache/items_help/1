@@ -1,1 +1,0 @@
-tmux display-menu -T "#[align=centre] Help summary "         -x 'C' -y 'C' "Back to Previous menu <--" Left "run-shell '/Users/lsorensen/.tmux/plugins/tmux-menus/items/windows.sh'"
